@@ -10,11 +10,13 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class ProductMenu extends AppCompatActivity {
 
     Button insert, update, delete,view;
+    ImageView back;
     DBrod db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +30,18 @@ public class ProductMenu extends AppCompatActivity {
         update = (Button)findViewById(R.id.updateproduct);
         delete = (Button)findViewById(R.id.deleteproduct);
         view = (Button)findViewById(R.id.view);
+        back = findViewById(R.id.back);
 
         db = new DBrod(this);
+
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Menu.class);
+                startActivity(intent);
+            }
+        });
 
         insert.setOnClickListener(new View.OnClickListener() {
             @Override
